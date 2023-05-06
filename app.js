@@ -29,7 +29,7 @@ const showMoreGallery = [
 ];
 
 const showNext = () => {
-    for (i = showedCount; i < Math.min(showedCount + 5, showMoreGallery.length); i++) {
+    for (i = showedCount; i < Math.min(showedCount + 5, showMoreGallery.length + 1); i++) {
         // showMoreGallery[i].show = true;
         document.querySelector("#gallery-main :nth-child(" + i + ")").classList.add("active");
     }
@@ -43,17 +43,17 @@ const fix = () => {
 }
 
 
-let elo = 5;
-let howMuchShowed = elo + 4;
+let howMuchShouldBeShownNow = 5;
+let howMuchShouldBeShown = howMuchShouldBeShownNow + 4;
 const imgTransition = () => {
-    howMuchShowed = howMuchShowed + 5;
+    howMuchShouldBeShown = howMuchShouldBeShown + 5;
 
     setTimeout(() => {
-        for (a = elo, i = 1; a <= howMuchShowed, i <= 4; a++, i++) {
+        for (a = howMuchShouldBeShownNow, i = 1; a <= howMuchShouldBeShown, i <= 4; a++, i++) {
             document.querySelector("#gallery-main :nth-child(" + a + ")").classList.add("d" + `${i}`);
 
         }
-        elo = elo + 4;
+        howMuchShouldBeShownNow = howMuchShouldBeShownNow + 4;
         i = 1;
     }, 300);
 };
@@ -72,11 +72,8 @@ const renderGallery = () => {
 }
 
 document.querySelector("button").addEventListener("click", () => {
-
     showNext();
     imgTransition();
-
-
 });
 
 renderGallery();
