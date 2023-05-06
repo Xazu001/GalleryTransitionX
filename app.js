@@ -43,19 +43,19 @@ const fix = () => {
 }
 
 
-let elo = 4;
+let elo = 5;
 let howMuchShowed = elo + 4;
 const imgTransition = () => {
-    howMuchShowed = howMuchShowed + 4;
+    howMuchShowed = howMuchShowed + 5;
 
     setTimeout(() => {
-        for (a = elo, i = 1; a <= howMuchShowed, i <= 5; a++, i++) {
+        for (a = elo, i = 1; a <= howMuchShowed, i <= 4; a++, i++) {
             document.querySelector("#gallery-main :nth-child(" + a + ")").classList.add("d" + `${i}`);
 
         }
         elo = elo + 4;
         i = 1;
-    }, 500);
+    }, 300);
 };
 
 const renderGallery = () => {
